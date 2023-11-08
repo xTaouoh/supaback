@@ -32,14 +32,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const supabase = 
-    supabaseClient.createClient('https://dkcqrzzpueiaqweigiwt.supabase.co', 
-        'meyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRrY3FyenpwdWVpYXF3ZWlnaXd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk0ODE1ODIsImV4cCI6MjAxNTA1NzU4Mn0.k_nng2CSZJjQTghf10KpDeRKdEObsoBrp034gayarZY')
+    supabaseClient.createClient('SupabaseUrl', 
+        'SupabaseKey')
 
 
 app.get('/products', async (req, res) => {
     const {data, error} = await supabase
         .from('products')
-        .select(*)
+        .select()
     res.send(data);
     console.log(`lists all products${data}`);
 });
@@ -48,7 +48,7 @@ app.get('/products/:id', async (req, res) => {
     console.log("id = " + req.params.id);
     const {data, error} = await supabase
         .from('products')
-        .select(*)
+        .select()
         .eq('id', req.params.id)
     res.send(data);
 
