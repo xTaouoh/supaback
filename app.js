@@ -39,7 +39,7 @@ const supabase =
 app.get('/products', async (req, res) => {
     const {data, error} = await supabase
         .from('products')
-        .select()
+        .select(*)
     res.send(data);
     console.log(`lists all products${data}`);
 });
@@ -48,7 +48,7 @@ app.get('/products/:id', async (req, res) => {
     console.log("id = " + req.params.id);
     const {data, error} = await supabase
         .from('products')
-        .select()
+        .select(*)
         .eq('id', req.params.id)
     res.send(data);
 
